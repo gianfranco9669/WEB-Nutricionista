@@ -1,0 +1,12 @@
+EQUILIBRIO 21 — DEMO PORTÁTIL
+
+Abrí index.html con doble clic en Chrome, Edge, Firefox o Safari actualizado. No necesitás Node.js ni conexión a Internet para recorrer la demo.
+
+Todos los contenidos e imágenes están incluidos. Mi espacio muestra Esencial y Acompañado; Administración demo está al pie. Los cambios se guardan solamente en tu navegador cuando permite almacenamiento local. No hay servidor ni datos compartidos entre visitantes. No ingreses datos personales reales.
+
+No realiza cobros, envíos de correo, reservas ni permisos de Google Drive. Es una presentación navegable; los enlaces externos que se configuren requieren Internet. Las imágenes son generadas y provisionales.
+
+El proyecto completo con backend está en:
+https://github.com/gianfranco9669/WEB-Nutricionista/tree/demo/equilibrio-21
+
+Para una demo online con backend, consultar documentacion/COMPARTIR-DEMO.md en ese repositorio.
