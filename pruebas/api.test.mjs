@@ -25,10 +25,10 @@ before(async () => {
 after(async () => { proceso?.kill(); await esperar(100); if(carpeta) await rm(carpeta,{recursive:true,force:true}); });
 
 test('la portada sirve HTML, fuentes e imagen sin servicios externos', async () => {
- for(const [ruta,tipo] of [['/','text/html'],['/estilos.css','text/css'],['/aplicacion.js','text/javascript'],['/fuentes/editorial.ttf','font/ttf'],['/imagenes/bowl-equilibrio.webp','image/webp']]) {
+ for(const [ruta,tipo] of [['/','text/html'],['/estilos.css','text/css'],['/aplicacion.js','text/javascript'],['/fuentes/editorial.ttf','font/ttf'],['/imagenes/bowl-equilibrio.webp','image/webp'],['/imagenes/desayuno.webp','image/webp'],['/imagenes/habitos.webp','image/webp'],['/imagenes/mercado.webp','image/webp']]) {
   const r = await fetch(`${base}${ruta}`); assert.equal(r.status,200); assert.ok(r.headers.get('content-type').startsWith(tipo)); assert.ok((await r.arrayBuffer()).byteLength > 100);
  }
- const r = await solicitar('publico'); assert.equal(r.datos.semanas.length,3); configuracion = r.datos.configuracion; assert.equal(r.datos.configuracion.recursos,undefined);
+ const r = await solicitar('publico'); assert.equal(r.datos.semanas.length,3); assert.equal(r.datos.itinerario.length,21); assert.ok(r.datos.itinerario.every(d => !('enlaces' in d))); assert.equal(r.datos.configuracion.enlaceReservas,undefined); configuracion = r.datos.configuracion; assert.equal(r.datos.configuracion.recursos,undefined);
 });
 test('el acceso anónimo no permite campus ni administración', async () => {
  assert.equal((await solicitar('campus')).codigo,401); assert.equal((await solicitar('admin/estado')).codigo,403);
@@ -62,7 +62,7 @@ test('administración modifica títulos, enlaces y precios; rechaza enlaces ajen
  dia.enlaces.clase = 'https://example.com/archivo'; assert.equal((await solicitar('admin/dias/1',{metodo:'PUT',cookie:cookieAdmin,datos:dia})).codigo,400);
  const datos = {...configuracion,precioEsencial:62000,recursos:{},enlaceReservas:'https://calendly.com/ejemplo'};
  assert.equal((await solicitar('admin/configuracion',{metodo:'PUT',cookie:cookieAdmin,datos})).codigo,200);
- assert.equal((await solicitar('publico')).datos.configuracion.precioEsencial,62000);
+ const publico=await solicitar('publico'); assert.equal(publico.datos.configuracion.precioEsencial,62000); assert.equal(publico.datos.configuracion.enlaceReservas,undefined); assert.equal(publico.datos.itinerario[0].titulo,dia.titulo);
 });
 test('acceso pendiente, revocado y vencido bloquea el campus desde el servidor', async () => {
  for(const acceso of ['pendiente','revocado','activo']) {

@@ -2,6 +2,14 @@
 
 Demo de presentación para **María Sol Calvo — Nutrición Digestiva**, desarrollada a partir de `Equilibrio_21_Brief_Programador.pdf` (7 páginas). Incluye web comercial, campus de 21 días y administración editable.
 
+## Entregable y demo online
+
+**La cliente puede verlo sin instalar nada.** La rama [`demo-publica`](https://github.com/gianfranco9669/WEB-Nutricionista/tree/demo-publica) contiene un único `index.html` autónomo: descargar ZIP, descomprimir y abrirlo con doble clic. Las cuatro imágenes y fuentes están incrustadas; la simulación guarda cambios solo en el navegador.
+
+La rama actual conserva el proyecto completo con backend. Incluye `render.yaml` para publicarlo como Web Service de prueba y el exportador `npm run entregable`. La variante portátil también se puede alojar en GitHub Pages. [Pasos exactos para compartir y activar una demo web](documentacion/COMPARTIR-DEMO.md).
+
+La portada incorpora un **explorador interactivo de los 21 días**, con selector de semana/día, imágenes por etapa, avance/retroceso, navegación por teclado y animaciones que respetan movimiento reducido. El temario público refleja las ediciones administrativas, sin revelar enlaces de materiales ni reservas.
+
 ## Iniciar
 
 Requiere Node.js 22 o superior (validado con Node.js 24). No utiliza dependencias de npm, base de datos externa ni compilación.
@@ -26,7 +34,7 @@ Las cuentas de ejemplo conservan progreso al recargar mientras dure su sesión. 
 
 ## Diseño
 
-Paleta crema, salvia, verde profundo y terracota. **Noto Serif Display** (normal e itálica) aporta una voz editorial distintiva; **Inter** facilita la lectura y la interacción. Son alternativas abiertas a Montserrat, alojadas localmente para no depender de Google Fonts. La imagen gastronómica es **generada para la demo** y está guardada localmente: debe reemplazarse por fotografía real de la marca para cumplir el requisito de publicación. El monograma sustituye provisionalmente al retrato; no inventamos foto, matrícula, trayectoria o testimonios de la profesional.
+Paleta crema, salvia, verde profundo y terracota. **Noto Serif Display** (normal e itálica) aporta una voz editorial distintiva; **Inter** facilita la lectura y la interacción. Son alternativas abiertas a Montserrat, alojadas localmente para no depender de Google Fonts. Las cuatro imágenes gastronómicas y de hábitos son **generadas para la demo** y están guardadas localmente: deben reemplazarse por fotografía real de la marca para cumplir el requisito de publicación. El monograma sustituye provisionalmente al retrato; no inventamos foto, matrícula, trayectoria o testimonios de la profesional.
 
 ## Validación
 
@@ -41,9 +49,11 @@ Validación adicional de navegador, si están instalados Python, Playwright y Ch
 
 ```sh
 python3 pruebas/interfaz.py
+npm run entregable
+DEMO_PORTATIL=1 python3 pruebas/interfaz.py
 ```
 
-Recorre la compra, campus Esencial y Acompañado, progreso, edición administrativa, accesos, compras, menú móvil y anchos 390/768/1440. Guarda capturas en `resultados/` (ignorado por Git).
+El modo portátil se prueba con la red bloqueada y el HTML servido desde memoria: Chromium administrado bloquea el esquema file://. No usa un servidor ni solicita assets externos. La versión normal recorre la compra, campus Esencial y Acompañado, progreso, edición administrativa, accesos, compras, menú móvil y anchos 390/768/1440. Guarda capturas en `resultados/` (ignorado por Git).
 
 ## Archivos
 

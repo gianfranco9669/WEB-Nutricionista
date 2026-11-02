@@ -32,7 +32,8 @@ const servidor = http.createServer(async (req, res) => {
       const token = /(?:^|;\s*)equilibrio=([^;]+)/.exec(req.headers.cookie || '')?.[1];
       const sesion = sesiones.get(token); if (sesion && sesion.vence < Date.now()) sesiones.delete(token);
       const actual = sesion?.vence > Date.now() ? sesion : null;
-      if (req.method === 'GET' && url.pathname === '/api/publico') return responder(res, 200, { configuracion: { ...estado.configuracion, recursos: undefined }, semanas: semanas.map(({ temas, ...s }) => s), demo: true });
+      if (req.method === 'GET' && url.pathname === '/api/salud') return responder(res, 200, { estado: 'correcto', modo: 'demo' });
+      if (req.method === 'GET' && url.pathname === '/api/publico') return responder(res, 200, { configuracion: { ...estado.configuracion, recursos: undefined, enlaceReservas: undefined }, semanas: semanas.map(({ temas, ...s }) => s), itinerario: estado.dias.map(({ numero, semana, titulo, descripcion }) => ({ numero, semana, titulo, descripcion })), demo: true });
       if (req.method === 'GET' && url.pathname === '/api/sesion') return responder(res, 200, { rol: actual?.rol || null, comprador: actual?.compradorId ? vistaComprador(estado.compradores.find(c => c.id === actual.compradorId)) : null });
       if (req.method === 'POST' && url.pathname === '/api/demo') {
         const datos = await cuerpo(req); exigir(['esencial', 'acompanado', 'administrador'].includes(datos.modalidad), 'Modalidad inválida.');

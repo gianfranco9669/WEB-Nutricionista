@@ -42,3 +42,11 @@ El programa se ve completo desde la habilitación. “21 días” describe la pr
 La cliente debe definir precios, moneda y compradores del exterior, vigencia, matrícula/biografía/retrato, materiales, carpeta publicada, cuenta de cobros, remitente de correo y políticas comerciales. No se requieren estas decisiones para presentar la demo; sí para habilitar ventas reales.
 
 No se prometió cumplimiento legal automático ni permisos que esta entrega no configura. El documento de producción separa alcance inicial de automatizaciones opcionales para presupuestar sin inflar el MVP.
+
+## Actualización 1.1 — presentación interactiva y entrega
+
+Se incorporaron tres imágenes generadas adicionales: desayuno, ingredientes y hábitos. Las tres semanas tienen portada propia y el bloque de materiales usa una fotografía diferente del hero. Continúan siendo recursos provisionales, a sustituir por fotografías reales antes del lanzamiento.
+
+El explorador público permite seleccionar semanas y días, consultar temas editados desde el panel, avanzar y retroceder, y usar teclado. Es una vista previa de títulos y descripciones; no expone enlaces privados ni el enlace de reservas. No analiza síntomas ni genera indicaciones nutricionales.
+
+El exportador genera una presentación HTML autónoma, separada del backend. Simula campus, compra y administración mediante almacenamiento local y no autentica usuarios reales. La rama `demo-publica` contiene este resultado. El proyecto completo sigue en `demo/equilibrio-21`; `render.yaml` y `COMPARTIR-DEMO.md` preparan su alojamiento como web de prueba. La publicación efectiva depende de activar Pages o un servicio en la cuenta del usuario.

@@ -1,0 +1,18 @@
+# Demo compartible con backend. Plan gratuito y almacenamiento efímero.
+services:
+  - type: web
+    name: equilibrio-21-demo
+    runtime: node
+    plan: free
+    branch: demo/equilibrio-21
+    buildCommand: npm run check
+    startCommand: npm start
+    healthCheckPath: /api/salud
+    autoDeploy: false
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: COOKIE_SEGURA
+        value: "1"
+      - key: DIRECTORIO_DATOS
+        value: /tmp/equilibrio-21-demo
