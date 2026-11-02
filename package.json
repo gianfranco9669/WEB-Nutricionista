@@ -1,0 +1,6 @@
+{
+  "name": "equilibrio-21", "version": "1.0.0", "private": true, "type": "module",
+  "description": "Demo comercial y campus de Equilibrio 21 — María Sol Calvo",
+  "scripts": { "dev": "node --watch servidor.mjs", "start": "node servidor.mjs", "test": "node --test pruebas/*.test.mjs", "check": "node --check servidor.mjs && node --check public/aplicacion.js" },
+  "engines": { "node": ">=22" }
+}
